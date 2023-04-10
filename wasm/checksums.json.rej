@@ -1,0 +1,41 @@
+diff a/wasm/checksums.json b/wasm/checksums.json	(rejected hunks)
+@@ -1,20 +1,20 @@
+ {
+-    "tx_bond.wasm": "tx_bond.3277d0c7eb81db738c3b77963c546e385e11bd0c87ff5213e49d0d4a96f4b7e1.wasm",
+-    "tx_change_validator_commission.wasm": "tx_change_validator_commission.8da9bfc181836d1715e3e35f99bf3577c157f619ceb573b2911e9ebd2b497a9b.wasm",
+-    "tx_ibc.wasm": "tx_ibc.7f35d82f6ba216f6ecffe0c7ca52e641a9b7763dde03d533a88bc20a88c14737.wasm",
+-    "tx_init_account.wasm": "tx_init_account.9cc792ba8535b0e29643184afbd51c6b5e7153a4276a7acc23079ed9e802fb2b.wasm",
+-    "tx_init_proposal.wasm": "tx_init_proposal.26d8b551e609dddc6dc6e608d36994edde00b49a14c20fa0c8074e94244d5674.wasm",
+-    "tx_init_validator.wasm": "tx_init_validator.3f04b3bbeb17b493858ba96dc309021468b166ab01d594773cbf9744d1a8076b.wasm",
+-    "tx_reveal_pk.wasm": "tx_reveal_pk.7a645d6afbf8844e1aea83905eed26f9e7d550db456bdde169a4786c902b917f.wasm",
+-    "tx_transfer.wasm": "tx_transfer.0db9fb8473c65b88800e2cd1e9a630245d01062cdc31fdb80b87da53fedaa5fd.wasm",
+-    "tx_unbond.wasm": "tx_unbond.c3391611d4a1f5818876a799efa87fee793eedcba193c636e294bf1dd4c6f340.wasm",
+-    "tx_update_vp.wasm": "tx_update_vp.dbaf4fdacb12fba9fe1231afd0371a302a8242cbbf74565d8605a646fe5a00ab.wasm",
+-    "tx_vote_proposal.wasm": "tx_vote_proposal.704d0c40268c997ab185d9e5a9f02decf40f4c51c9684a25ef6a9be2768b180d.wasm",
+-    "tx_withdraw.wasm": "tx_withdraw.d213ea0d916f7c962527fb2526df98479dff7c0ab984e776f523e61407ca3608.wasm",
+-    "vp_implicit.wasm": "vp_implicit.e5aff165c7b3c43f0d6d0bc2848f2d171ce5599f01fa33d0572bea584a83903c.wasm",
+-    "vp_masp.wasm": "vp_masp.813d4ec58e55255f0fe3e3d40ea723fca34dcea69de57f26e89c7737c56254db.wasm",
+-    "vp_testnet_faucet.wasm": "vp_testnet_faucet.25bcab2206bba4cf89dbf33cf133fd034878566d7e375856bbf53e4547db441f.wasm",
+-    "vp_token.wasm": "vp_token.0450ebd338297015cade8d10cdac49d08332729aceb0879b502c803221495eb8.wasm",
+-    "vp_user.wasm": "vp_user.9bba925de6e5b32b194b922fc10938c54480cbfc3f5e9ca3df8666daebb78bef.wasm",
+-    "vp_validator.wasm": "vp_validator.5866ec82d9a63974c4d685d4b6d4fa3a1cecc247021a56e4136f54aade9be6d4.wasm"
++    "tx_bond.wasm": "tx_bond.837d3228c668f6b296fbed978cc63c5201a617200ff060f5fe4392f7ae1f81f5.wasm",
++    "tx_change_validator_commission.wasm": "tx_change_validator_commission.aab6f3016057a15e0ee2f264e27171301f6ab345ba473e5521081929ceb0e4c8.wasm",
++    "tx_ibc.wasm": "tx_ibc.47079cb7c717852f2248703f9f4afde778e8772115385a66d60908f3500ebd4a.wasm",
++    "tx_init_account.wasm": "tx_init_account.3d5ca1e62b1c7677e1fc0507a36c4d0b2a9eded07b46164b1000b121b25107ba.wasm",
++    "tx_init_proposal.wasm": "tx_init_proposal.7248a0cba7e630c0451238b0779e0aeb8f0ca60ebe9df898fbbc2f33546c2327.wasm",
++    "tx_init_validator.wasm": "tx_init_validator.d60cf488dfb1dac44c59eac6d53e81d2ff191b3b5b0e56b1f6f11ab8898c69a4.wasm",
++    "tx_reveal_pk.wasm": "tx_reveal_pk.c05dac2c4253c02ceb1481846583d62c857bd73cedc6c004d2a96c863f7bdaaf.wasm",
++    "tx_transfer.wasm": "tx_transfer.08c9ba0fd957fe50c7c9f0b8402e76c7665a87a3e8da89fa579f2f0e5e301008.wasm",
++    "tx_unbond.wasm": "tx_unbond.09bf7334bd64e62620c9794b82b192471ca654dc3e6fa0a0ee54594836852aaa.wasm",
++    "tx_update_vp.wasm": "tx_update_vp.e2d136bf647311e76e03114ba4984e9dfe669f989f9d1d7c133aec457ed5f51f.wasm",
++    "tx_vote_proposal.wasm": "tx_vote_proposal.f6e0b4a1a461a0311b4e55b779c1f9dcae8b27ac6db8ef9a58d3594b9aacfabe.wasm",
++    "tx_withdraw.wasm": "tx_withdraw.42dd9197dc039114b91c0c62542fc68060848347c0ca616ce19d6a9c05e869ce.wasm",
++    "vp_implicit.wasm": "vp_implicit.3c72d56c59c9b5221906020fb54c405433df4bd1715812ea059bf66dc9717461.wasm",
++    "vp_masp.wasm": "vp_masp.3f5acc2347c7608a45a2a295ceab05c7b4269895c07a551b81da29bb962323e2.wasm",
++    "vp_testnet_faucet.wasm": "vp_testnet_faucet.a4dd0ddbe1f9e0eeeca5567eb68bf1c73464440d2685d33e0cb513b5d49d555b.wasm",
++    "vp_token.wasm": "vp_token.139fa110e4f3fe436fcb461991e28c504e2a805397f51f97f88f8f77104bfe27.wasm",
++    "vp_user.wasm": "vp_user.09440d1c8ba81e1197331d18479b825474ee9852289342615b81e9fcb2468c2a.wasm",
++    "vp_validator.wasm": "vp_validator.07d26d99398204f85102efc0224f1b12efca400b0f1e999c29cbf00c6b834c87.wasm"
+ }
+\ No newline at end of file
