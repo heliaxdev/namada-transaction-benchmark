@@ -22,6 +22,26 @@ pub fn transfer(c: &mut Criterion) {
                 || {
                     let mut shielded_ctx = BenchShieldedCtx::default();
 
+                    let albert_payment_addr = shielded_ctx
+                        .ctx
+                        .wallet
+                        .find_payment_addr(ALBERT_PAYMENT_ADDRESS)
+                        .unwrap()
+                        .to_owned();
+
+                    // Shield some tokens for Albert
+                    let shield_tx = shielded_ctx.generate_masp_tx(
+                        amount,
+                        TransferSource::Address(defaults::albert_address()),
+                        TransferTarget::PaymentAddress(albert_payment_addr),
+                    );
+                    shielded_ctx.shell.execute_tx(&shield_tx);
+                    shielded_ctx.shell.wl_storage.commit_tx();
+                    shielded_ctx.shell.commit();
+
+                    shielded_ctx
+                },
+                |shielded_ctx| {
                     let albert_spending_key = shielded_ctx
                         .ctx
                         .wallet
@@ -40,17 +60,6 @@ pub fn transfer(c: &mut Criterion) {
                         .find_payment_addr(BERTHA_PAYMENT_ADDRESS)
                         .unwrap()
                         .to_owned();
-
-                    // Shield some tokens for Albert
-                    let shield_tx = shielded_ctx.generate_masp_tx(
-                        amount,
-                        TransferSource::Address(defaults::albert_address()),
-                        TransferTarget::PaymentAddress(albert_payment_addr),
-                    );
-                    shielded_ctx.shell.execute_tx(&shield_tx);
-                    shielded_ctx.shell.wl_storage.commit_tx();
-                    shielded_ctx.shell.commit();
-
                     let signed_tx = match bench_name {
                         "transparent" => shielded_ctx.generate_masp_tx(
                             amount,
@@ -74,11 +83,7 @@ pub fn transfer(c: &mut Criterion) {
                         ),
                         _ => panic!("Unexpected bench test"),
                     };
-
-                    (shielded_ctx, signed_tx)
-                },
-                |(shielded_ctx, signed_tx)| {
-                    shielded_ctx.shell.execute_tx(signed_tx);
+                    shielded_ctx.shell.execute_tx(&signed_tx);
                 },
                 criterion::BatchSize::LargeInput,
             )
