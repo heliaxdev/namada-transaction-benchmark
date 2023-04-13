@@ -1,0 +1,20 @@
+{
+    "tx_bond.wasm": "tx_bond.f1f4a41d464357658d1aa03abca618ae16248d4e1d60276c2b7ce112fcd5d588.wasm",
+    "tx_change_validator_commission.wasm": "tx_change_validator_commission.cf397ea3e8b31a721acc0c4c34f2e8bf9963338f88fdd18e4cb3535e3a211b9d.wasm",
+    "tx_ibc.wasm": "tx_ibc.1e9da971027e43f8373cd11dff96ae70ca09eadd7acc92cd5cd22d0d0a90ee6f.wasm",
+    "tx_init_account.wasm": "tx_init_account.d5bac970bd42ace64f1b9da3dccc8d6d474f5f19cce66719d12d2d1b062a043c.wasm",
+    "tx_init_proposal.wasm": "tx_init_proposal.11dfe4fee0a0e6ffc8bb7188a2e46f50850bb49c398b3763a59d13d8ea78662e.wasm",
+    "tx_init_validator.wasm": "tx_init_validator.3f6d1ee0338d875ed6edf6fc3fc3d019e42f7137ba28811a32dec022251cb501.wasm",
+    "tx_reveal_pk.wasm": "tx_reveal_pk.d5f92e24ee566e5ecbb0def6bade4c942dd3dc5c7258b460fb8edc4cc641ebcf.wasm",
+    "tx_transfer.wasm": "tx_transfer.2bceb190b553ea34a653d59f235be5df657c1d900f24de2dada58dff19d53b3c.wasm",
+    "tx_unbond.wasm": "tx_unbond.6aaaaa2610868e6dd31721a4bdedccb6491958f33905b30011ce9f060417a023.wasm",
+    "tx_update_vp.wasm": "tx_update_vp.49f01ac81669c52cf3f36bc7e70c692228cb3b9e413e893d33db2894e38ed62f.wasm",
+    "tx_vote_proposal.wasm": "tx_vote_proposal.17c015f59c4b54e796774003cd7f6d3c91a016b6f8d290dd693859945b381680.wasm",
+    "tx_withdraw.wasm": "tx_withdraw.339fe513082b326f7e092139fa1001b340e03347e9ed9be5dd2841ce62aea784.wasm",
+    "vp_implicit.wasm": "vp_implicit.12d66dd51abde17fd75edab9a864740fd387a6abd9bfaba3499fe8a6931da26a.wasm",
+    "vp_masp.wasm": "vp_masp.420e7afa762c4f46b08020e924fe1060c4e4596623372aad778f697954a176a2.wasm",
+    "vp_testnet_faucet.wasm": "vp_testnet_faucet.c40766ff7ba3f66a1adff825a935fab689f875723eca74209d12baec7ccaf3bd.wasm",
+    "vp_token.wasm": "vp_token.ec21b34e9f938e9d3e997823050bb39634ae18c63633db8e0dbf606536645faf.wasm",
+    "vp_user.wasm": "vp_user.597f5f33be67b158a63c748fbae129959ad27ebf99d1df32a79a4c8ccdb79544.wasm",
+    "vp_validator.wasm": "vp_validator.1da7b7817d6bce55b08305aa25c75eed144a55b4a5f1d4f37a549ccc9bb7d3c2.wasm"
+}

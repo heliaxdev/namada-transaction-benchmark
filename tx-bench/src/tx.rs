@@ -1,39 +1,40 @@
 use std::str::FromStr;
 
 use criterion::Criterion;
-use namada::core::types::token::Amount;
+// use namada::core::types::token::Amount;
 
-use namada::types::masp::{TransferSource, TransferTarget};
+use masp_primitives::transaction::builder::TransactionMetadata;
+use masp_primitives::transaction::Transaction;
 use namada::ledger::wallet::Store;
 use namada::ledger::wallet::Wallet;
-use std::path::Path;
 use namada::types::address::Address;
+use namada::types::masp::{TransferSource, TransferTarget};
+use std::path::Path;
 
-use tendermint_config::net::Address as TendermintAddress;
 use namada::types::key::common::SecretKey;
+use tendermint_config::net::Address as TendermintAddress;
 use tendermint_rpc::HttpClient;
 
-use namada::ledger::masp;
 use masp_primitives::zip32::ExtendedFullViewingKey;
 use namada::ledger::args;
+use namada::ledger::masp;
 
+use borsh::BorshDeserialize;
+use borsh::BorshSerialize;
+use masp_primitives::transaction::builder;
+use masp_proofs::prover::LocalTxProver;
+use namada::ledger::masp::find_valid_diversifier;
+use namada::ledger::wallet::SdkWalletUtils;
+use rand::rngs::OsRng;
+use std::env;
 use std::fs::File;
 use std::fs::OpenOptions;
 use std::io::Read;
 use std::io::Write;
-use namada::ledger::masp::find_valid_diversifier;
-use rand::rngs::OsRng;
-use namada::ledger::wallet::SdkWalletUtils;
 use std::path::PathBuf;
-use borsh::BorshSerialize;
-use borsh::BorshDeserialize;
-use masp_proofs::prover::LocalTxProver;
-use std::env;
+use tokio::runtime::Runtime;
 
-
-const TX_WITHDRAW_WASM: &str = "tx_withdraw.wasm";
-const TX_INIT_ACCOUNT_WASM: &str = "tx_init_account.wasm";
-const TX_INIT_VALIDATOR_WASM: &str = "tx_init_validator.wasm";
+use wasm_bindgen::prelude::*;
 
 /// Shielded context file name
 const FILE_NAME: &str = "shielded.dat";
@@ -55,10 +56,7 @@ impl FuzzerShieldedUtils {
         let spend_path = params_dir.join(masp::SPEND_NAME);
         let convert_path = params_dir.join(masp::CONVERT_NAME);
         let output_path = params_dir.join(masp::OUTPUT_NAME);
-        if !(spend_path.exists()
-            && convert_path.exists()
-            && output_path.exists())
-        {
+        if !(spend_path.exists() && convert_path.exists() && output_path.exists()) {
             println!("MASP parameters not present, downloading...");
             masp_proofs::download_parameters()
                 .expect("MASP parameters not present or downloadable");
@@ -92,8 +90,7 @@ impl masp::ShieldedUtils for FuzzerShieldedUtils {
             let output_path = params_dir.join(masp::OUTPUT_NAME);
             LocalTxProver::new(&spend_path, &output_path, &convert_path)
         } else {
-            LocalTxProver::with_default_location()
-                .expect("unable to load MASP Parameters")
+            LocalTxProver::with_default_location().expect("unable to load MASP Parameters")
         }
     }
 
@@ -142,19 +139,24 @@ impl masp::ShieldedUtils for FuzzerShieldedUtils {
 }
 
 
+async fn shielded(
+    ctx: &mut masp::ShieldedContext<FuzzerShieldedUtils>,
+    client: &HttpClient,
+    args: args::TxTransfer,
+) -> Result<Option<(Transaction, TransactionMetadata)>, builder::Error> {
+    ctx.gen_shielded_transfer(client, args, true).await
+}
 
 pub fn transfer(c: &mut Criterion) {
     let mut group = c.benchmark_group("transfer");
     group.sample_size(10);
-    let amount = Amount::whole(500);
+    // let amount = Amount::whole(500);
 
-    for bench_name in ["transparent", "shielding", "unshielding", "shielded"] {
-        group.bench_function(bench_name, |b| {
-            b.iter_batched_ref(
+    group.bench_function("shielded", move |b| {
+            b.to_async(Runtime::new().unwrap()).iter_batched(
                 || {
-                    // change this
-                    let mut tx_transfer_wasm = File::open("/home/murisi/namada/wasm/tx_transfer.7bb6b5f6b2126372f68711f133ab7cee1656e0cb0f052490f681b9a3a71aa691.wasm").unwrap();
-                    let mut tx_reveal_pk_wasm = File::open("/home/murisi/namada/wasm/tx_reveal_pk.a956c436553d92e1dc8afcf44399e95559b3eb19ca4df5ada3d07fc6917e0591.wasm").unwrap();
+                    let mut tx_transfer_wasm = File::open("../wasm/tx_transfer.2bceb190b553ea34a653d59f235be5df657c1d900f24de2dada58dff19d53b3c.wasm").unwrap();
+                    let mut tx_reveal_pk_wasm = File::open("../wasm/tx_reveal_pk.d5f92e24ee566e5ecbb0def6bade4c942dd3dc5c7258b460fb8edc4cc641ebcf.wasm").unwrap();
 
                     let mut tx_transfer_bytes = vec![];
                     tx_transfer_wasm.read_to_end(&mut tx_transfer_bytes).unwrap();
@@ -178,10 +180,10 @@ pub fn transfer(c: &mut Criterion) {
                     let native_token = Address::from_str("atest1v4ehgw36x3prswzxggunzv6pxqmnvdj9xvcyzvpsggeyvs3cg9qnywf589qnwvfsg5erg3fkl09rg5")
                         .expect("Unable to construct native token");
                     // Address of the faucet
-                    let faucet_addr = Address::from_str("atest1v4ehgw36g9rygd6xgs65ydpsg9qnsv3sxuungwp5xaqnv333xu65gdfexcmng3fkgfryy3psdxyc4w")
+                    let faucet_addr = Address::from_str("atest1v4ehgw36gyerxv6xgyunqv3egsmnv3pj8quny3fc8prrs32rg4qnxv2ygser2djxgcmnzv2y3dnxyq")
                         .expect("Unable to construct source");
                     // Key to withdraw funds from the faucet
-                    let faucet_key = SecretKey::from_str("001c1002a48ba1075e2602028697c2bdf182e07636927f399b22ca99e07f92e04a").expect("Invalid secret key");
+                    let faucet_key = SecretKey::from_str("0079b5f7bf9a7634c3ab1f7853bc196283e4190422aa21085a0dbc548e554e0da2").expect("Invalid secret key");
 
                     // Construct out shielding transaction
                     let transfer_tx: args::TxTransfer = args::TxTransfer {
@@ -208,7 +210,7 @@ pub fn transfer(c: &mut Criterion) {
                         },
                     };
 
-                    let mut shielded_ctx = FuzzerShieldedUtils::new(Path::new("./").to_path_buf());
+                    let shielded_ctx = FuzzerShieldedUtils::new(Path::new("./").to_path_buf());
                     // let mut shielded_ctx = masp::ShieldedContext::default();
 
                     let addr = TendermintAddress::from_str("127.0.0.1:27657")
@@ -216,57 +218,18 @@ pub fn transfer(c: &mut Criterion) {
                     let client = HttpClient::new(addr).unwrap();
                     // what we want
                     // shielded_ctx.gen_shielded_transfer(client, args, transfer_tx);
-                    (shielded_ctx, transfer_tx)
+                    (shielded_ctx, transfer_tx, client)
                 },
-                |(shielded_ctx, transfer_tx)| {
-                    // let albert_spending_key = shielded_ctx
-                    //     .ctx
-                    //     .wallet
-                    //     .find_spending_key(ALBERT_SPENDING_KEY)
-                    //     .unwrap()
-                    //     .to_owned();
-                    // let albert_payment_addr = shielded_ctx
-                    //     .ctx
-                    //     .wallet
-                    //     .find_payment_addr(ALBERT_PAYMENT_ADDRESS)
-                    //     .unwrap()
-                    //     .to_owned();
-                    // let bertha_payment_addr = shielded_ctx
-                    //     .ctx
-                    //     .wallet
-                    //     .find_payment_addr(BERTHA_PAYMENT_ADDRESS)
-                    //     .unwrap()
-                    //     .to_owned();
-                    // let signed_tx = match bench_name {
-                    //     "transparent" => shielded_ctx.generate_masp_tx(
-                    //         amount,
-                    //         TransferSource::Address(dev::albert_address()),
-                    //         TransferTarget::Address(dev::bertha_address()),
-                    //     ),
-                    //     "shielding" => shielded_ctx.generate_masp_tx(
-                    //         amount,
-                    //         TransferSource::Address(dev::albert_address()),
-                    //         TransferTarget::PaymentAddress(albert_payment_addr),
-                    //     ),
-                    //     "unshielding" => shielded_ctx.generate_masp_tx(
-                    //         amount,
-                    //         TransferSource::ExtendedSpendingKey(albert_spending_key),
-                    //         TransferTarget::Address(dev::albert_address()),
-                    //     ),
-                    //     "shielded" => shielded_ctx.generate_masp_tx(
-                    //         amount,
-                    //         TransferSource::ExtendedSpendingKey(albert_spending_key),
-                    //         TransferTarget::PaymentAddress(bertha_payment_addr),
-                    //     ),
-                    //     _ => panic!("Unexpected bench test"),
-                    // };
-                    // shielded_ctx.shell.execute_tx(&signed_tx);
-                    ()
+                |(mut shielded_ctx, transfer_tx, client)| {
+                    async move {
+                        let _res = shielded(&mut shielded_ctx, &client, transfer_tx.clone()).await;
+                        // println!("Results: {:?}", res);
+                        ()
+                    }
                 },
                 criterion::BatchSize::LargeInput,
             )
         });
-    }
 
     group.finish();
 }

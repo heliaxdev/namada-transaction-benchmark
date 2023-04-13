@@ -1235,6 +1235,7 @@ dependencies = [
  "ciborium",
  "clap 3.2.23",
  "criterion-plot",
+ "futures 0.3.28",
  "itertools",
  "lazy_static",
  "num-traits 0.2.15",
@@ -1246,6 +1247,7 @@ dependencies = [
  "serde_derive",
  "serde_json",
  "tinytemplate",
+ "tokio",
  "walkdir",
 ]
 
@@ -6188,6 +6190,7 @@ dependencies = [
  "tendermint-config",
  "tendermint-rpc",
  "tokio",
+ "wasm-bindgen",
 ]
 
 [[package]]

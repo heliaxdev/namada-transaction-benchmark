@@ -1,0 +1,27 @@
+* Setting up a faucet
+** Creating a .namada folder
+It should look something like this
+
+All these commands are run at the root dir of the namada folder
+
+It should be on the =mariari/shared-sdk-integration= branch
+
+#+begin_example
+  Run cargo run --bin namadac -- --mode validator utils init-network --genesis-path genesis/e2e-tests-single-node.toml --wasm-checksums-path wasm/checksums.json --chain-prefix e2e-test --unsafe-dont-encrypt --localhost --allow-duplicate-ip.
+
+
+  Copy the .wasm binaries from wasm into .namada/e2e-test.991e873907ec0c097c2d4/wasm/ and .namada/e2e-test.991e873907ec0c097c2d4/setup/validator-0/.namada/e2e-test.991e873907ec0c097c2d4/wasm/.
+
+  Copy .namada/e2e-test.991e873907ec0c097c2d4/setup/other/wallet.toml to .namada/e2e-test.991e873907ec0c097c2d4/wallet.toml.
+
+
+  RUST_BACKTRACE=1  cargo run --bin namada -- --mode validator --base-dir .namada/e2e-test.991e873907ec0c097c2d4/setup/validator-0/.namada/ ledger to start a node.
+#+end_example
+
+I've given the .namada folder here, you can just copy it to your
+namada repository and run the last command with the correct name to
+work.
+
+*** Issues
+- Key errors missing from yaml :: redo an install of namada
+

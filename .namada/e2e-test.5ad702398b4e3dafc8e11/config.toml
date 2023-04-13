@@ -1,0 +1,25 @@
+wasm_dir = "wasm"
+
+[ledger]
+genesis_time = "2021-09-30T10:00:00+00:00"
+chain_id = "e2e-test.5ad702398b4e3dafc8e11"
+
+[ledger.shell]
+base_dir = ".namada"
+ledger_address = "127.0.0.1:26658"
+storage_read_past_height_limit = 3600
+db_dir = "db"
+tendermint_dir = "tendermint"
+
+[ledger.tendermint]
+rpc_address = "127.0.0.1:26657"
+p2p_address = "127.0.0.1:26656"
+p2p_persistent_peers = ["tcp://d1e742dff3a9b8f1c9c1968b774a6d4be9f3b5d6@127.0.0.1:27656"]
+p2p_pex = true
+p2p_allow_duplicate_ip = true
+p2p_addr_book_strict = false
+consensus_timeout_commit = "1000ms"
+tendermint_mode = "Full"
+instrumentation_prometheus = false
+instrumentation_prometheus_listen_addr = "127.0.0.1:26661"
+instrumentation_namespace = "namadan_tm"

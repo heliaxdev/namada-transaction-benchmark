@@ -1,0 +1,177 @@
+genesis_time = "2021-09-30T10:00:00Z"
+native_token = "NAM"
+[validator.validator-0]
+consensus_public_key = "00da345e9dbb80b4b97363c8faa064506a1007fe2d1068fed9bae095a15b0e7b26"
+account_public_key = "00e8bc204c5ba7a45beb970178bf1e457fad17d8628a988c56725ff1d619a89bc6"
+protocol_public_key = "00b517497e619ba8e6c24c6d45721d4c8021f5823619539a726a9865f0be028796"
+dkg_public_key = "600000001b47c47fb115972b629f49183bbbad302d0ec46975e1cf01f697574ff728e85118943d9d89c86a7806aa04373e7d291109230064de6639ec3cb78831af2e06c01987af9c3e00cca7079265b63ebd53f0edcd1e624c84dd3ef499363f9503fd98"
+address = "atest1v4ehgw36xepngd2rxsmrjwfh8qmyxv3jgsu5ydjpxgmr2d3s8q6ngvfkxgerwsf4g5mrxd3j2pc5u5"
+tokens = 200000
+non_staked_balance = 1000000000000
+commission_rate = "0.05"
+max_commission_rate_change = "0.01"
+validator_vp = "vp_validator"
+[token.Kartoffel]
+address = "atest1v4ehgw36gep5ysecxq6nyv3jg3zygv3e89qn2vp48pryxsf4xpznvve5gvmy23fs89pryvf5a6ht90"
+vp = "vp_token"
+
+[token.Kartoffel.balances]
+Daewon = 1000000
+Bertha = 1000000
+Christel = 1000000
+Albert = 1000000
+faucet = 9223372036854
+
+[token.NAM]
+address = "atest1v4ehgw36x3prswzxggunzv6pxqmnvdj9xvcyzvpsggeyvs3cg9qnywf589qnwvfsg5erg3fkl09rg5"
+vp = "vp_token"
+
+[token.NAM.balances]
+"Albert.public_key" = 100
+Christel = 1000000
+"faucet.public_key" = 100
+Bertha = 1000000
+Albert = 1000000
+"Christel.public_key" = 100
+faucet = 9223372036854
+Daewon = 1000000
+"Bertha.public_key" = 100
+"validator-0.public_key" = 100
+
+[token.DOT]
+address = "atest1v4ehgw36gg6nvs2zgfpyxsfjgc65yv6pxy6nwwfsxgungdzrggeyzv35gveyxsjyxymyz335hur2jn"
+vp = "vp_token"
+
+[token.Dot]
+address = "atest1v4ehgw368quy2vjpgvcyxdpexep52sj9xfqn2veeggu5gvfcgg6yys6z8y6rsd35gfpr2de3c3wspr"
+vp = "vp_token"
+
+[token.Dot.balances]
+Christel = 1000000
+Albert = 1000000
+Bertha = 1000000
+Daewon = 1000000
+faucet = 9223372036854
+
+[token.Apfel]
+address = "atest1v4ehgw36gfryydj9g3p5zv3kg9znyd358ycnzsfcggc5gvecgc6ygs2rxv6ry3zpg4zrwdfeumqcz9"
+vp = "vp_token"
+
+[token.Apfel.balances]
+Christel = 1000000
+Daewon = 1000000
+Albert = 1000000
+Bertha = 1000000
+faucet = 9223372036854
+
+[token.BTC]
+address = "atest1v4ehgw36xdzryve5gsc52veeg5cnsv2yx5eygvp38qcrvd29xy6rys6p8yc5xvp4xfpy2v694wgwcp"
+vp = "vp_token"
+
+[token.BTC.balances]
+Albert = 1000000
+Christel = 1000000
+Daewon = 1000000
+Bertha = 1000000
+faucet = 9223372036854
+
+[token.ETH]
+address = "atest1v4ehgw36xqmr2d3nx3ryvd2xxgmrq33j8qcns33sxezrgv6zxdzrydjrxveygd2yxumrsdpsf9jc2p"
+vp = "vp_token"
+
+[token.ETH.balances]
+Daewon = 1000000
+Albert = 1000000
+faucet = 9223372036854
+Christel = 1000000
+Bertha = 1000000
+
+[token.Schnitzel]
+address = "atest1v4ehgw36xue5xvf5xvuyzvpjx5un2v3k8qeyvd3cxdqns32p89rrxd6xx9zngvpegccnzs699rdnnt"
+vp = "vp_token"
+
+[token.Schnitzel.balances]
+Albert = 1000000
+Daewon = 1000000
+Bertha = 1000000
+faucet = 9223372036854
+Christel = 1000000
+[established.Bertha]
+address = "atest1v4ehgw36gepnssfeggmnjdzpgye52wfegfrrv33nggerxdpngc6rvwpeg3p5xsej89z5gsfcyquyd0"
+vp = "vp_user"
+public_key = "002b2b09f035907a0e4559100cd8fb72d9b2bed776d2e70df237b9a0b3dcf973fd"
+
+[established.faucet]
+address = "atest1v4ehgw36gyerxv6xgyunqv3egsmnv3pj8quny3fc8prrs32rg4qnxv2ygser2djxgcmnzv2y3dnxyq"
+vp = "vp_testnet_faucet"
+public_key = "002f3411232429581fed7c2176ae1b2b2d8bef16b5e08576a4146bad5816e31d29"
+
+[established.masp]
+address = "atest1v4ehgw36xaryysfsx5unvve4g5my2vjz89p52sjxxgenzd348yuyyv3hg3pnjs35g5unvde4ca36y5"
+vp = "vp_masp"
+public_key = "00d1b238edd8dff66555e3c944f265a3ee5efc0836e755de5a0e89ce4b0107030a"
+
+[established.Albert]
+address = "atest1v4ehgw36gfpy2vp4gfryywfsxym5gs338y65gse4xgeyydjzxepnqdzrxdqnqwfhxcmnzw2p762kje"
+vp = "vp_user"
+public_key = "006f9f8ebe35c55dbff560ad46e10972aaa29214921add3e87546c835a0b65fd33"
+
+[established.Christel]
+address = "atest1v4ehgw36xcursv35g5myvd2xgyurzdzyg3zny3fcxpz5yw2r89ry2d3sg9rygv3jx4qny3zxhn4zsa"
+vp = "vp_user"
+public_key = "00e8bbd92503be4aff4ccb34f7a2830594e13e7b1f88ccba3476592399bb435055"
+[implicit.Daewon]
+public_key = "0089de483ea35c96f7f9dbc8103f9f699538c6a0ef63aa8a5dfafa2062123af530"
+
+[parameters]
+min_num_of_blocks = 4
+max_expected_time_per_block = 30
+vp_whitelist = []
+tx_whitelist = []
+implicit_vp = "vp_implicit"
+epochs_per_year = 31536000
+pos_gain_p = "0.1"
+pos_gain_d = "0.1"
+
+[pos_params]
+max_validator_slots = 128
+pipeline_len = 2
+unbonding_len = 3
+tm_votes_per_token = "1"
+block_proposer_reward = "0.125"
+block_vote_reward = "0.1"
+max_inflation_rate = "0.1"
+target_staked_ratio = "0.6667"
+duplicate_vote_min_slash_rate = "0.001"
+light_client_attack_min_slash_rate = "0.001"
+
+[gov_params]
+min_proposal_fund = 500
+max_proposal_code_size = 300000
+min_proposal_period = 3
+max_proposal_period = 27
+max_proposal_content_size = 10000
+min_proposal_grace_epochs = 6
+[wasm.vp_implicit]
+filename = "vp_implicit.wasm"
+sha256 = "12d66dd51abde17fd75edab9a864740fd387a6abd9bfaba3499fe8a6931da26a"
+
+[wasm.vp_testnet_faucet]
+filename = "vp_testnet_faucet.wasm"
+sha256 = "c40766ff7ba3f66a1adff825a935fab689f875723eca74209d12baec7ccaf3bd"
+
+[wasm.vp_masp]
+filename = "vp_masp.wasm"
+sha256 = "420e7afa762c4f46b08020e924fe1060c4e4596623372aad778f697954a176a2"
+
+[wasm.vp_user]
+filename = "vp_user.wasm"
+sha256 = "597f5f33be67b158a63c748fbae129959ad27ebf99d1df32a79a4c8ccdb79544"
+
+[wasm.vp_validator]
+filename = "vp_validator.wasm"
+sha256 = "1da7b7817d6bce55b08305aa25c75eed144a55b4a5f1d4f37a549ccc9bb7d3c2"
+
+[wasm.vp_token]
+filename = "vp_token.wasm"
+sha256 = "ec21b34e9f938e9d3e997823050bb39634ae18c63633db8e0dbf606536645faf"

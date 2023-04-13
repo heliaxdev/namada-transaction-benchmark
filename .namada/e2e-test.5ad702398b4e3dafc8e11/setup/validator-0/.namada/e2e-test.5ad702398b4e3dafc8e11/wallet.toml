@@ -1,0 +1,47 @@
+[view_keys]
+
+[spend_keys]
+
+[payment_addrs]
+
+[keys]
+validator-0-account-key = "unencrypted:0020d6aec6709ac2fa6a15aeda9c44534dd1373bab89de0ef07e359bbe568a6f64"
+validator-0-protocol-key = "unencrypted:00a521bf00de5f8356c3f6589823a9be643d01d13a200385ade57f8b2403005261"
+validator-0-consensus-key = "unencrypted:0047162c35ad577e13227e109a64079bbe7ef687eb775205226674da2a28134c6c"
+
+[addresses]
+pos = "atest1v9hx7w362pex7mmxyphkvgznw3skkefqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqq8ylv7"
+btc = "atest1v4ehgw36xdzryve5gsc52veeg5cnsv2yx5eygvp38qcrvd29xy6rys6p8yc5xvp4xfpy2v694wgwcp"
+pos_slash_pool = "atest1v9hx7w362pex7mmxyphkvgznw3skkefq2dkxzumgypgx7mmvyqszqgpqyqszqgpqyqszqgpqecxumt"
+schnitzel = "atest1v4ehgw36xue5xvf5xvuyzvpjx5un2v3k8qeyvd3cxdqns32p89rrxd6xx9zngvpegccnzs699rdnnt"
+validator-0-account-key = "atest1d9khqw36xuunj32zgs6rv3fexc6yzde3x56yywfjgvmrzvfcxser2v35xcu5xwfexvenwd3ezf7z3n"
+kartoffel = "atest1v4ehgw36gep5ysecxq6nyv3jg3zygv3e89qn2vp48pryxsf4xpznvve5gvmy23fs89pryvf5a6ht90"
+bertha = "atest1v4ehgw36gepnssfeggmnjdzpgye52wfegfrrv33nggerxdpngc6rvwpeg3p5xsej89z5gsfcyquyd0"
+governance = "atest1v9hx7w36gahhvetjdeskucm9yqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpq5a20qt"
+masp = "atest1v4ehgw36xaryysfsx5unvve4g5my2vjz89p52sjxxgenzd348yuyyv3hg3pnjs35g5unvde4ca36y5"
+christel = "atest1v4ehgw36xcursv35g5myvd2xgyurzdzyg3zny3fcxpz5yw2r89ry2d3sg9rygv3jx4qny3zxhn4zsa"
+validator-0 = "atest1v4ehgw36xepngd2rxsmrjwfh8qmyxv3jgsu5ydjpxgmr2d3s8q6ngvfkxgerwsf4g5mrxd3j2pc5u5"
+nam = "atest1v4ehgw36x3prswzxggunzv6pxqmnvdj9xvcyzvpsggeyvs3cg9qnywf589qnwvfsg5erg3fkl09rg5"
+daewon = "atest1d9khqw36xvcrq3fsxymngvf4xfpr2d6xxscyv3f4xpzr2sfhxdpnjwzxxpry2sfk8qmrzv2p0ywt9c"
+faucet = "atest1v4ehgw36gyerxv6xgyunqv3egsmnv3pj8quny3fc8prrs32rg4qnxv2ygser2djxgcmnzv2y3dnxyq"
+dot = "atest1v4ehgw368quy2vjpgvcyxdpexep52sj9xfqn2veeggu5gvfcgg6yys6z8y6rsd35gfpr2de3c3wspr"
+validator-0-consensus-key = "atest1d9khqw36gscrzsfn89pyvd6rgcmrsdp4xc6rz3zyxucyys2zxvcyv33egym5gdfjx5mrjs6pzlfjpe"
+apfel = "atest1v4ehgw36gfryydj9g3p5zv3kg9znyd358ycnzsfcggc5gvecgc6ygs2rxv6ry3zpg4zrwdfeumqcz9"
+eth_bridge = "atest1v9hx7w36g42ysgzzwf5kgem9ypqkgerjv4ehxgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpq8f99ew"
+eth = "atest1v4ehgw36xqmr2d3nx3ryvd2xxgmrq33j8qcns33sxezrgv6zxdzrydjrxveygd2yxumrsdpsf9jc2p"
+albert = "atest1v4ehgw36gfpy2vp4gfryywfsxym5gs338y65gse4xgeyydjzxepnqdzrxdqnqwfhxcmnzw2p762kje"
+validator-0-protocol-key = "atest1d9khqw368ye5xvjp8yervvfsxary2335xpqn2s6zgy6rwv3sgdz5g3zrgvmnsdp3xqcngwfsu5edsc"
+
+[pkhs]
+799EBD46E964A7154B92C61184252469C9933769 = "validator-0-account-key"
+93C2A926107FEF40A5CBA4720CEDDCC784101490 = "validator-0-protocol-key"
+D01A39BF7CF6845641DD70BAB30FF9A7D52569CA = "validator-0-consensus-key"
+
+[validator_data]
+address = "atest1v4ehgw36xepngd2rxsmrjwfh8qmyxv3jgsu5ydjpxgmr2d3s8q6ngvfkxgerwsf4g5mrxd3j2pc5u5"
+
+[validator_data.keys]
+protocol_keypair = "ED25519_SK_PREFIX00a521bf00de5f8356c3f6589823a9be643d01d13a200385ade57f8b2403005261"
+
+[validator_data.keys.dkg_keypair]
+decryption_key = [22, 83, 229, 145, 67, 148, 233, 39, 218, 129, 203, 254, 242, 74, 206, 172, 160, 77, 90, 192, 246, 228, 3, 122, 140, 63, 106, 242, 232, 38, 232, 79]
