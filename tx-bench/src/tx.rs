@@ -3,6 +3,7 @@ use std::str::FromStr;
 use criterion::Criterion;
 // use namada::core::types::token::Amount;
 
+use namada::ledger::{tx, masp};
 use masp_primitives::transaction::builder::TransactionMetadata;
 use masp_primitives::transaction::Transaction;
 use namada::ledger::wallet::Store;
@@ -17,7 +18,6 @@ use tendermint_rpc::HttpClient;
 
 use masp_primitives::zip32::ExtendedFullViewingKey;
 use namada::ledger::args;
-use namada::ledger::masp;
 
 use borsh::BorshDeserialize;
 use borsh::BorshSerialize;
@@ -218,11 +218,12 @@ pub fn transfer(c: &mut Criterion) {
                     let client = HttpClient::new(addr).unwrap();
                     // what we want
                     // shielded_ctx.gen_shielded_transfer(client, args, transfer_tx);
-                    (shielded_ctx, transfer_tx, client)
+                    (shielded_ctx, transfer_tx, client, wallet)
                 },
-                |(mut shielded_ctx, transfer_tx, client)| {
+                |(mut shielded_ctx, transfer_tx, client, mut wallet)| {
                     async move {
-                        let _res = shielded(&mut shielded_ctx, &client, transfer_tx.clone()).await;
+                        let _res = tx::submit_transfer::<HttpClient, SdkWalletUtils<PathBuf>,_>(&client, &mut wallet, &mut shielded_ctx, transfer_tx).await;
+                        // let _res = shielded(&mut shielded_ctx, &client, transfer_tx.clone()).await;
                         // println!("Results: {:?}", res);
                         ()
                     }
